@@ -14,10 +14,10 @@ router.get('/scat/:scategorieID',async(req, res)=>{
     }
     });
     // afficher la liste des articles.
-    router.get('/', async (req, res, )=> {
+    router.get('/', async (req, res )=> {
     try {
     const articles = await 
-    Article.findById(response._id).populate("scategorieID").exec();
+    Article.find({}, null, {sort:{'_id': -1}}).populate("scategorieID").exec();
     res.status(200).json(articles);
     } catch (error) {
     res.status(404).json({ message: error.message });
@@ -55,7 +55,7 @@ router.get('/scat/:scategorieID',async(req, res)=>{
     { $set: req.body },
     { new: true }
     );
-    const articles = await
+   const articles = await
     Article.findById(art._id).populate("scategorieID").exec();
     res.status(200).json(articles);
     } catch (error) {
@@ -73,3 +73,4 @@ router.get('/scat/:scategorieID',async(req, res)=>{
     }
     });
     module.exports = router;
+    
