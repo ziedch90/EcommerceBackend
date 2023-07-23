@@ -5,9 +5,11 @@ const categorieRouter = require('./routes/categorie.route');
 const scategorieRouter = require('./routes/scategorie.route');
 const articleRouter =require("./routes/article.route");
 dotenv.config()
+const cors=require('cors')
 const app = express();
 //BodyParser Middleware
 app.use(express.json());
+app.use(cors());
 mongoose.set("strictQuery", false);
 // Connexion à la base données
 mongoose.connect(process.env.DATABASECLOUD,{
